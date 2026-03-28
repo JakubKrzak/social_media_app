@@ -1,0 +1,17 @@
+[project]
+name = "kurs-api"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "alembic>=1.18.4",
+    "email-validator>=2.3.0",
+    "fastapi[all]>=0.135.1",
+    "pandas>=3.0.1",
+    "passlib[aragon2,argon2,bcrypt]>=1.7.4",
+    "psycopg2",
+    "pyjwt>=2.12.1",
+    "python-jose[cryptography]>=3.5.0",
+    "sqlalchemy>=1.4,<2.0",
+]
