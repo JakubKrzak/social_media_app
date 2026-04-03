@@ -51,3 +51,17 @@ def get_current_user(token: str = Depends(ouath2_scheme), db: Session = Depends(
 
     return user
 
+
+def decode_access_token(token: str):
+    try:
+        payload = jwt.decode(token, SECRET_KEY, [ALGORITHM])
+
+        id: str = payload.get("user_id")
+        email: EmailStr = payload.get("user_email")
+        if id is None or email is None:
+            raise credentials_exception
+    
+        token_data = schemas.TokenData(id=id, email=email)
+        return token_data
+    except JWTError:
+        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail=f"Unathotized session")
