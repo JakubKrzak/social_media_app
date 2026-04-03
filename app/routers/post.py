@@ -1,4 +1,3 @@
-from unittest import result
 
 from fastapi import Query, status, HTTPException, Depends, APIRouter
 from sqlalchemy.orm import Session
