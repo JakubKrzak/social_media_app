@@ -15,8 +15,11 @@ def test_login_user(client, test_user):
     assert decoded_token.email == test_user['email']
     assert decoded_token.id == test_user['id']
 
-
-
+def test_incorrect_login(client, test_user):
+    user_data = {"username": test_user['email'],
+                 "password": "password_incorrect"}
+    response = client.post("/login/", data=user_data)
+    assert response.status_code == 403
     
 
     
